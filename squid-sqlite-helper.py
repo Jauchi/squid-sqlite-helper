@@ -9,7 +9,9 @@ c = db.cursor()
 
 while True:
     try:
-        inp = input()
+        raw_inp = input()
+
+        inp = raw_inp.split(' ')[0] # skip everything after the first field
 
         if os.path.isfile(settings.LOCK_FILE):
             for _ in range(0, settings.LOCK_FILE_TIMEOUT_SECS):
